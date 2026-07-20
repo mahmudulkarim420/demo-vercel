@@ -1,0 +1,19 @@
+model Service {
+  id                  String            @id @default(uuid())
+  title               String
+  description         String
+  price               Float
+  categoryId          String
+  category            Category          @relation(fields: [categoryId], references: [id])
+  technicianProfileId String
+  technicianProfile   TechnicianProfile @relation(fields: [technicianProfileId], references: [id])
+
+  bookings Booking[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([categoryId, createdAt])
+  @@index([technicianProfileId])
+  @@index([price])
+}

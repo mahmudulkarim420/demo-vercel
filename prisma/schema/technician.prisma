@@ -1,0 +1,24 @@
+model TechnicianProfile {
+  id           String   @id @default(uuid())
+  userId       String   @unique
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  bio          String?
+  skills       String[]
+  experience   Int      @default(0)
+  hourlyRate   Float    @default(0)
+  location     String   @default("")
+  totalReviews Int      @default(0)
+  averageRating Float  @default(0)
+  availability Json     @default("{}")
+  isVerified   Boolean  @default(false)
+
+  services Service[]
+  bookings Booking[]
+  reviews  Review[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([averageRating])
+  @@index([hourlyRate])
+}
