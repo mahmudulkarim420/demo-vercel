@@ -6,7 +6,7 @@ import validateParams from "../../middlewares/validateParams";
 import { idParamValidationSchema, paginationQuerySchema } from "../../validations";
 import { auth } from "../../middlewares/auth";
 import validateQuery from "../../middlewares/validateQuery";
-
+  
 const router = express.Router();
 
 /**
